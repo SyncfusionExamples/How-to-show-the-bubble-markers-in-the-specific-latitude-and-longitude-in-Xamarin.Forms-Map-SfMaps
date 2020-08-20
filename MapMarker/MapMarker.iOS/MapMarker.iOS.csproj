@@ -159,11 +159,11 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MapMarker\MapMarker.csproj">
-      <Project>{4A3C6E7F-5545-4F4E-B02F-38FB8487EE85}</Project>
-      <Name>MapMarker_Collection</Name>
+      <Project>{06c6bebf-e766-4b2f-9f48-920a3fbb2b6e}</Project>
+      <Name>MapMarker</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

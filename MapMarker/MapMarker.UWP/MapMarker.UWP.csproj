@@ -150,12 +150,6 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MapMarker_Collection\MapMarker_Collection.csproj">
-      <Project>{4A3C6E7F-5545-4F4E-B02F-38FB8487EE85}</Project>
-      <Name>MapMarker_Collection</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Assets\ShapeFiles\world1.dbf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -164,6 +158,12 @@
     <EmbeddedResource Include="Assets\ShapeFiles\world1.shp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapMarker\MapMarker.csproj">
+      <Project>{06c6bebf-e766-4b2f-9f48-920a3fbb2b6e}</Project>
+      <Name>MapMarker</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

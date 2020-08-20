@@ -21,6 +21,13 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
+  <PropertyGroup>
+    <UseShortFileNames>True</UseShortFileNames>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntermediateOutputPath>C:\Projects\MyApp</IntermediateOutputPath>
+  </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
@@ -101,9 +108,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MapMarker_Collection\MapMarker_Collection.csproj">
-      <Project>{4A3C6E7F-5545-4F4E-B02F-38FB8487EE85}</Project>
-      <Name>MapMarker_Collection</Name>
+    <ProjectReference Include="..\MapMarker\MapMarker.csproj">
+      <Project>{06c6bebf-e766-4b2f-9f48-920a3fbb2b6e}</Project>
+      <Name>MapMarker</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
