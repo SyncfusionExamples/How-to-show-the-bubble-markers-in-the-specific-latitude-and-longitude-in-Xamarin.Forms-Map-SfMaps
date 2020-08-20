@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MapMarker_Collection"
+             xmlns:maps="clr-namespace:Syncfusion.SfMaps.XForms;assembly=Syncfusion.SfMaps.XForms"
+             x:Class="MapMarker_Collection.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:TemplateConverter x:Key="TemplateConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <maps:SfMaps  x:Name="Maps" Margin="15">
+        <maps:SfMaps.Layers >
+            <maps:ShapeFileLayer Uri="world1.shp" Markers="{Binding CustomMarkers}" >
+                <maps:ShapeFileLayer.ShapeSettings>
+                    <maps:ShapeSetting ShapeFill="Gray" />
+                </maps:ShapeFileLayer.ShapeSettings>
+                <maps:ShapeFileLayer.MarkerTemplate>
+                    <DataTemplate>
+                        <BoxView x:Name="boxView"
+                                 CornerRadius="{Binding .,Converter={x:StaticResource TemplateConverter},ConverterParameter={x:Reference boxView},Mode=TwoWay}" 
+                                 BackgroundColor="LightBlue"/>
+                    </DataTemplate>
+                </maps:ShapeFileLayer.MarkerTemplate>
+            </maps:ShapeFileLayer>
+        </maps:SfMaps.Layers>
+    </maps:SfMaps>
+</ContentPage>
