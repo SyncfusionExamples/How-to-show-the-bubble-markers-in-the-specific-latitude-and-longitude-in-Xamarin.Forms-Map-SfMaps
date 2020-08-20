@@ -1,4 +1,4 @@
-# How-to-show-the-bubble-markers-in-the-specific-latitude-and-longitude-in-Xamarin.Forms-Map-SfMaps-
+# How to show the bubble markers in the specific latitude and longitude in Xamarin.Forms Map (SfMaps)
 This article explains how to add the bubble marker in a specific latitude and longitude in Xamarin.Forms Syncfusion maps control with the following steps.
 
 Step 1: Initialize the SfMaps control and add the ShapeFile layer to the layer collection of the SfMaps control with Uri property to retrieve the location of ShapeFile.
