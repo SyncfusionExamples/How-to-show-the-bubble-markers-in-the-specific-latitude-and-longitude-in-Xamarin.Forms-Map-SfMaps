@@ -2,6 +2,8 @@
 
 This repository contains sample for how to show bubble markers in the specific latitude and longitude in the [Syncfusion Xamarin.Forms Maps](https://help.syncfusion.com/xamarin/maps/getting-started) control.
 
+Please refer the KB through this [link](https://www.syncfusion.com/kb/11910/how-to-show-the-bubble-markers-in-the-specific-latitude-and-longitude-in-xamarin-forms-map).
+
 ## Syncfusion controls
 
 This project used the following Syncfusion control(s):
