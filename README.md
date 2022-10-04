@@ -21,7 +21,7 @@ This project used the following Syncfusion control(s):
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 
-Refer to the following link for more details - [System Requirements](https://help.syncfusion.com/xamarin-ios/system-requirements)
+Refer to the following link for more details - [System Requirements](https://help.syncfusion.com/xamarin/system-requirements)
 
 ## How to run the sample
 
