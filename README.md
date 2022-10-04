@@ -1,127 +1,50 @@
-# How to show the bubble markers in the specific latitude and longitude in Xamarin.Forms Map (SfMaps)
-This article explains how to add the bubble marker in a specific latitude and longitude in Xamarin.Forms Syncfusion maps control with the following steps.
+# How to show the bubble markers in the specific latitude and longitude in Xamarin.Forms Map SfMaps
 
-Step 1: Initialize the SfMaps control and add the ShapeFile layer to the layer collection of the SfMaps control with Uri property to retrieve the location of ShapeFile.
+This repository contains sample for how to show bubble markers in the specific latitude and longitude in the [Syncfusion Xamarin.Forms Maps](https://help.syncfusion.com/xamarin/maps/getting-started) control.
 
-[XAML]
+## Syncfusion controls
 
-```
-<maps:SfMaps  x:Name="Maps" >
-        <maps:SfMaps.Layers >
-            <maps:ShapeFileLayer Uri="world1.shp">
+This project used the following Syncfusion control(s):
+* [SfMaps](https://www.syncfusion.com/xamarin-ui-controls/xamarin-maps)
 
-               …
+## Supported platforms
 
-            </maps:ShapeFileLayer>
-        </maps:SfMaps.Layers>
-    </maps:SfMaps>
-```
-Step 2: Create a custom marker by extending the MapMarker and add the custom markers with latitude, longitude, and population values to the shape file layer using the Markers property. And you can define the own marker style using the MarkerTemplate property of ShapeFileLayer as shown in the following code.
+| Platforms | Supported versions |
+| --------- | ------------------ |
+| Android   | API level 21 and later versions |
+| iOS | iOS 9.0 and later versions |
+| UWP | Windows 10 devices |
 
-[XAML]
+## Requirements to run the sample
 
-```
-<maps:SfMaps  x:Name="Maps" >
-        <maps:SfMaps.Layers >
-            <maps:ShapeFileLayer Uri="world1.shp" Markers="{Binding CustomMarkers}" >
-                <maps:ShapeFileLayer.ShapeSettings>
-                    <maps:ShapeSetting ShapeFill="Gray" />
-                </maps:ShapeFileLayer.ShapeSettings>
-                <maps:ShapeFileLayer.MarkerTemplate>
-                    <DataTemplate>
-                        <BoxView x:Name="boxView"
-                                 CornerRadius="{Binding .,Converter={x:StaticResource TemplateConverter},ConverterParameter={x:Reference boxView},Mode=TwoWay}" 
-                                 BackgroundColor="LightBlue"/>
-                    </DataTemplate>
-                </maps:ShapeFileLayer.MarkerTemplate>
-            </maps:ShapeFileLayer>
-        </maps:SfMaps.Layers>
-    </maps:SfMaps>
-```
-[C#]
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) or [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 
-```
-    public class ViewModel
-    {
-        public ObservableCollection<MapMarker> CustomMarkers { get; set; }
-        public ViewModel()
-        {         
-            CustomMarkers = new ObservableCollection<MapMarker>();
-            CustomMarkers.Add(new CustomMarker() { Label = "United States", Latitude = "38.8833", Longitude = "-77.0167", Population = 321174000 });
-            CustomMarkers.Add(new CustomMarker() { Label = "Brazil", Latitude = "-15.7833", Longitude = "-47.8667", Population = 204436000 });
-            CustomMarkers.Add(new CustomMarker() { Label = "India", Latitude = "21.0000", Longitude = "78.0000", Population = 1272470000 });
-            CustomMarkers.Add(new CustomMarker() { Label = "China", Latitude = "35.0000", Longitude = "103.0000", Population = 1370320000 });
-            CustomMarkers.Add(new CustomMarker() { Label = "Indonesia", Latitude = "-6.1750", Longitude = "106.8283", Population = 255461700 });
-        }
-    }
-    public class CustomMarker : MapMarker
-    {
-        public ImageSource ImageName { get; set; }
-        public double Population { get; set; }
-        public CustomMarker()
-        {
-            ImageName = ImageSource.FromResource("MapMarker_Collection.pin.png", typeof(CustomMarker).GetTypeInfo().Assembly);
-        }
-    }
-```
-Step 3: Using converter to define the size of the BoxView as per the value of the Population property in CustomMarker class.
+Refer to the following link for more details - [System Requirements](https://help.syncfusion.com/xamarin-ios/system-requirements)
 
-[XAML]
+## How to run the sample
 
-```
-         …
+1. Clone the sample and open it in Visual Studio.
 
-                <maps:ShapeFileLayer.MarkerTemplate>
-                    <DataTemplate>
-                        <BoxView x:Name="boxView"
-                                 CornerRadius="{Binding .,Converter={x:StaticResource TemplateConverter},ConverterParameter={x:Reference boxView},Mode=TwoWay}" 
-                                 BackgroundColor="LightBlue"/>
-                    </DataTemplate>
-                </maps:ShapeFileLayer.MarkerTemplate>
+   *Note: If you download the sample using the "Download ZIP" option, right-click it, select Properties, and then select Unblock.*
+   
+2. Register your license key in the App.xaml.cs file as demonstrated in the following code.
 
-       …
-```
+		public App()
+		{
+			//Register Syncfusion license
+			Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY");
+	
+			InitializeComponent();
+	
+			MainPage = new App1.MainPage();
+		}
+		
+	Refer to this [link](https://help.syncfusion.com/xamarin/licensing/overview) for more details.
+	
+3. Clean and build the application.
 
-[C#]
+4. Run the application.
 
-```
-    public class TemplateConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value != null)
-            {
-                var population = (value as CustomMarker).Population;
+## License
 
-                var isLowRange = population < 250000000;
-
-                var isMiddleRange = population >= 250000000 && population < 400000000;
-
-                double radius = isLowRange ? 5 : isMiddleRange ? 10 : 15; 
-
-                (parameter as BoxView).HeightRequest = (parameter as BoxView).WidthRequest = radius * 2;
-                (parameter as BoxView).BackgroundColor = radius == 5 ? Color.FromHex("#2E769F") : (radius == 10) ? Color.FromHex("#D84444") : Color.FromHex("#816F28");
-                return radius;                    
-            }
-
-            return 0;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value;
-        }
-    }
-```
-# Output
-
-![](Output.png)
- 
-# See also
-
-[How to add different style marker pins to Xamarin.Forms SfMaps](https://www.syncfusion.com/kb/11372/how-to-add-different-style-marker-pins-to-xamarin-forms-maps-sfmaps)
-
-[How to add SfMap markers dynamically to the tapped location](https://www.syncfusion.com/kb/10550/how-to-add-map-markers-dynamically-to-the-tapped-location)
-
-[How to group the markers based on zoom level in the imagery layer of the SfMaps control](https://www.syncfusion.com/kb/10200/how-to-group-the-markers-based-on-zoom-level-in-the-imagery-layer-of-the-sfmaps-control)
-
+Syncfusion has no liability for any damage or consequence that may arise by using or viewing the samples. The samples are for demonstrative purposes, and if you choose to use or access the samples, you agree to not hold Syncfusion liable, in any form, for any damage that is related to use, for accessing, or viewing the samples. By accessing, viewing, or seeing the samples, you acknowledge and agree Syncfusion’s samples will not allow you seek injunctive relief in any form for any claim related to the sample. If you do not agree to this, do not view, access, utilize, or otherwise do anything with Syncfusion’s samples.
