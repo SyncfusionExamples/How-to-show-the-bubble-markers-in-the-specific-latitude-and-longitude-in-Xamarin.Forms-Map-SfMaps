@@ -157,7 +157,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfMaps">
       <Version>*</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapMarker\MapMarker.csproj">
